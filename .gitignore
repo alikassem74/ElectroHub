@@ -1,0 +1,89 @@
+# =========================
+# Android / Gradle
+# =========================
+
+.gradle/
+build/
+**/build/
+
+# Local Gradle configuration
+local.properties
+
+# =========================
+# Android Studio / IntelliJ
+# =========================
+
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# =========================
+# Kotlin
+# =========================
+
+.kotlin/
+
+# =========================
+# Build outputs
+# =========================
+
+*.apk
+*.aab
+*.apks
+*.dex
+
+# =========================
+# Logs
+# =========================
+
+*.log
+
+# =========================
+# OS generated files
+# =========================
+
+.DS_Store
+Thumbs.db
+
+# =========================
+# Secrets / Environment
+# =========================
+
+.env
+.env.*
+!.env.example
+
+# =========================
+# Firebase / Google
+# =========================
+
+# Never commit Firebase Admin SDK / service-account credentials
+*-firebase-adminsdk-*.json
+firebase-service-account*.json
+service-account*.json
+
+# =========================
+# Android Signing Keys
+# =========================
+
+keystore/
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+
+# =========================
+# Temporary / backup files
+# =========================
+
+*.tmp
+*.temp
+*.bak
+*~
+# Firebase Functions / Node
+functions/node_modules/
+functions/.firebase/
+functions/lib/
+functions/dist/

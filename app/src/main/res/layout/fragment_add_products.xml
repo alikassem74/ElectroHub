@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:padding="20dp">
+
+        <LinearLayout
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/btn_Back"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@color/black"
+                android:contentDescription="@string/back"
+                android:src="@drawable/back" />
+
+            <!-- Title -->
+
+            <!-- Product Name -->
+
+            <TextView
+                android:id="@+id/txt_AddProductTitle"
+
+                android:layout_width="294dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="8dp"
+
+
+                android:text="@string/add_product"
+
+                android:textColor="@color/white"
+
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/etxt_ProductName"
+            android:layout_marginTop="50dp"
+
+            android:layout_width="0dp"
+
+            android:layout_height="55dp"
+
+            android:background="@drawable/etxt_background"
+
+            android:hint="@string/product_name"
+
+            android:padding="15dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/topBar" />
+        <!-- Description -->
+
+        <EditText
+            android:id="@+id/etxt_ProductDescription"
+
+            android:layout_width="0dp"
+
+            android:layout_height="120dp"
+
+            android:layout_marginTop="15dp"
+
+            android:gravity="top"
+
+            android:hint="@string/description"
+
+            android:padding="15dp"
+
+            android:background="@drawable/etxt_background"
+
+            app:layout_constraintTop_toBottomOf="@id/etxt_ProductName"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/txtV_Country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="@string/country"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etxt_ProductDescription" />
+
+        <TextView
+            android:id="@+id/txtV_Region"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/region"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtV_Country" />
+
+        <!-- Price -->
+
+        <EditText
+            android:id="@+id/etxt_ProductPrice"
+
+            android:layout_width="0dp"
+
+            android:layout_height="55dp"
+
+            android:layout_marginTop="15dp"
+
+            android:hint="@string/price"
+
+            android:inputType="numberDecimal"
+
+            android:padding="15dp"
+
+            android:background="@drawable/etxt_background"
+
+            app:layout_constraintTop_toBottomOf="@id/txtV_Region"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Category -->
+
+        <AutoCompleteTextView
+            android:id="@+id/actxt_ProductCategory"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="15dp"
+            android:hint="@string/category"
+            android:padding="15dp"
+            android:background="@drawable/etxt_background"
+            app:layout_constraintTop_toBottomOf="@id/etxt_ProductPrice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_ProductImages"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:padding="15dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/actxt_ProductCategory"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_AddImages"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_images"
+            android:layout_marginTop="10dp"
+            app:backgroundTint="@color/black"
+            app:cornerRadius="20dp"
+            app:rippleColor="@color/orange"
+            app:layout_constraintTop_toBottomOf="@id/rv_ProductImages"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- Add Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_AddProduct"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:text="@string/add_product"
+            android:layout_marginTop="15dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:cornerRadius="20dp"
+            app:rippleColor="@color/green"
+            app:layout_constraintTop_toBottomOf="@+id/btn_AddImages" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:indeterminateTint="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

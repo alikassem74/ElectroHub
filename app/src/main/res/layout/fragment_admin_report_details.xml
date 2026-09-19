@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+
+    <!-- Back -->
+
+    <ImageButton
+        android:id="@+id/btn_Back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+
+        android:background="@color/black"
+        android:contentDescription="@string/back"
+        android:src="@drawable/back"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!-- Title -->
+
+
+    <TextView
+        android:id="@+id/txtV_Title"
+        android:layout_width="326dp"
+        android:layout_height="48dp"
+
+        android:background="@color/black"
+        android:text="Report Details"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toBottomOf="@id/btn_Back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/btn_Back"
+        app:layout_constraintTop_toTopOf="@id/btn_Back"
+        app:layout_constraintVertical_bias="0.562" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:layout_marginTop="20dp"
+
+        app:layout_constraintTop_toBottomOf="@id/btn_Back"
+        app:layout_constraintBottom_toTopOf="@id/actionLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+
+            <!-- Product -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/product"
+                android:textColor="@color/gray"
+                android:textSize="13sp" />
+
+
+            <TextView
+                android:id="@+id/txtV_ProductName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="4dp"
+
+                android:text="@string/product_name"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <!-- Reason -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+
+                android:text="@string/reason"
+                android:textColor="@color/gray"
+                android:textSize="13sp" />
+
+
+            <TextView
+                android:id="@+id/txtV_Reason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="4dp"
+
+                android:text="@string/reason"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+
+
+            <!-- Description -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+
+                android:text="@string/description"
+                android:textColor="@color/gray"
+                android:textSize="13sp" />
+
+
+            <TextView
+                android:id="@+id/txtV_Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="4dp"
+
+                android:text="@string/report_description"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+
+            <!-- Reporter -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+
+                android:text="Reporter ID"
+                android:textColor="@color/gray"
+                android:textSize="13sp" />
+
+
+            <TextView
+                android:id="@+id/txtV_ReporterId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="4dp"
+
+                android:text="Reporter ID"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+
+            <!-- Seller -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+
+                android:text="Product Owner ID"
+                android:textColor="@color/gray"
+                android:textSize="13sp" />
+
+
+            <TextView
+                android:id="@+id/txtV_ProductOwnerId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="4dp"
+
+                android:text="Owner ID"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+
+            <!-- Status -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+
+                android:text="Status"
+                android:textColor="@color/gray"
+                android:textSize="13sp" />
+
+
+            <TextView
+                android:id="@+id/txtV_Status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="4dp"
+
+                android:text="PENDING"
+                android:textColor="@color/orange"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <!-- Actions -->
+    <LinearLayout
+        android:id="@+id/actionLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/scrollView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Dismiss -->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_Dismiss"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dismiss_report"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/gray"
+            app:cornerRadius="12dp" />
+
+
+        <!-- Warn Reporter -->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_WarnReporter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/warn_reporter"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/orange"
+            app:cornerRadius="12dp" />
+
+
+        <!-- Warn Seller -->
+
+
+        <!-- Remove Product -->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_WarnOwner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/orange"
+            android:text="@string/warn_product_owner"
+            android:textColor="@color/white"
+            app:cornerRadius="12dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_RemoveProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/remove_product"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/orange"
+            app:cornerRadius="12dp" />
+
+
+        <!-- Block Owner -->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_BlockUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/block_product_owner"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/black"
+            app:cornerRadius="12dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,179 @@
+<resources>
+
+    <string name="app_name">ElectroHub</string>
+
+    <string name="hello_blank_fragment">مرحبا بالجزء الفارغ</string>
+
+    <string name="electrohub_logo">شعار ElectroHub</string>
+
+    <string name="your_smart_electronics_store">متجرك الذكي للإلكترونيات</string>
+
+    <string name="electrohub">ElectroHub</string>
+
+    <string name="login">تسجيل الدخول</string>
+
+    <string name="don_t_have_an_account_register">ليس لديك حساب؟ إنشاء حساب</string>
+
+    <string name="welcome_back">مرحباً بعودتك</string>
+
+    <string name="create_account">إنشاء حساب</string>
+
+    <string name="full_name">الاسم الكامل</string>
+
+    <string name="email">البريد الإلكتروني</string>
+
+    <string name="password">كلمة المرور</string>
+
+    <string name="confirm_password">تأكيد كلمة المرور</string>
+
+    <string name="register">إنشاء حساب</string>
+
+    <string name="already_have_an_account_login">لديك حساب بالفعل؟ تسجيل الدخول</string>
+
+    <string name="search_products">البحث عن المنتجات...</string>
+
+    <string name="profile">الملف الشخصي</string>
+
+    <string name="categories">الفئات</string>
+
+    <string name="cart">السلة</string>
+
+    <string name="we_sent_a_verification_email_please_verify_your_email_before_continuing">لقد أرسلنا رسالة تحقق إلى بريدك الإلكتروني. يرجى التحقق من البريد قبل المتابعة.</string>
+
+    <string name="i_ve_verified_my_email">لقد تحققت من بريدي الإلكتروني</string>
+
+    <string name="resend_email">إعادة إرسال البريد</string>
+
+    <string name="product_name">اسم المنتج</string>
+
+    <string name="category">الفئة</string>
+
+    <string name="_0">$0</string>
+
+    <string name="add_product">إضافة منتج</string>
+
+    <string name="description">الوصف</string>
+
+    <string name="price">السعر</string>
+
+    <string name="add_images">إضافة صور</string>
+
+    <string name="message_seller">مراسلة البائع</string>
+
+    <string name="view_seller_profile">عرض ملف البائع</string>
+
+    <string name="report_listing">الإبلاغ عن الإعلان</string>
+
+    <string name="marketplace_member">عضو في السوق</string>
+
+    <string name="seller_name">John Doe</string>
+
+    <string name="product_description">وصف المنتج</string>
+
+    <string name="back">رجوع</string>
+
+    <string name="product_details">تفاصيل المنتج</string>
+
+    <string name="save">حفظ</string>
+
+    <string name="write_a_message">اكتب رسالة...</string>
+
+    <string name="send">إرسال</string>
+
+    <string name="hello">مرحباً</string>
+
+    <string name="saved">محفوظ لاحقاً</string>
+
+    <string name="saved_for_later">محفوظ لاحقاً</string>
+
+    <string name="profile_image">صورة الملف الشخصي</string>
+
+    <string name="my_products">منتجاتي</string>
+
+    <string name="my_chats">محادثاتي</string>
+
+    <string name="settings">الإعدادات</string>
+
+    <string name="log_out">تسجيل الخروج</string>
+
+    <string name="last_message">آخر رسالة</string>
+
+    <string name="delete_chat">حذف المحادثة</string>
+
+    <string name="warning_sticker">⚠️</string>
+
+    <string name="warning_message">يرجى الإبلاغ فقط إذا كان هذا الإعلان ينتهك قواعد ElectroHub بشكل حقيقي. قد تؤدي البلاغات الكاذبة أو المسيئة إلى تحذيرات أو قيود على حسابك.</string>
+
+    <string name="reason">السبب</string>
+
+    <string name="wrong_category">فئة خاطئة</string>
+
+    <string name="fake_product">منتج مزيف</string>
+
+    <string name="misleading_information">معلومات مضللة</string>
+
+    <string name="inappropriate_images">صور غير مناسبة</string>
+
+    <string name="spam">رسائل مزعجة</string>
+
+    <string name="scam_fraud">احتيال / خداع</string>
+
+    <string name="other">أخرى</string>
+
+    <string name="additional_details_optional">تفاصيل إضافية (اختياري)</string>
+
+    <string name="explain_why_you_re_reporting_this_listing">اشرح سبب الإبلاغ عن هذا الإعلان...</string>
+
+    <string name="cancel">إلغاء</string>
+
+    <string name="submit_report">إرسال البلاغ</string>
+
+    <string name="about">حول</string>
+
+    <string name="english">الإنجليزية</string>
+
+    <string name="general">عام</string>
+
+    <string name="language">اللغة</string>
+
+    <string name="night_mode">الوضع الليلي</string>
+
+    <string name="disable_notifications">تعطيل الإشعارات</string>
+
+    <string name="appearance">المظهر</string>
+
+    <string name="select_language">اختر اللغة</string>
+
+    <string name="dark_mode">الوضع الليلي</string>
+
+    <string name="help_amp_support"><![CDATA[المساعدة والدعم]]></string>
+
+    <string name="need_help">هل تحتاج إلى مساعدة؟</string>
+
+    <string name="support_email">electrohub.support@gmail.com</string>
+
+    <string name="version_1_0_0">الإصدار 1.0.0</string>
+
+    <string name="Some_description">ElectroHub هو سوق لشراء وبيع الإلكترونيات، قطع الكمبيوتر، أجهزة اللابتوب، ملحقات الألعاب، والمزيد.</string>
+
+    <string name="forgot_password"> نسيت كلمة السر ؟</string>
+
+    <string name="delete_account">حذف الحساب</string>
+
+    <string name="region">المنطقة</string>
+    <string name="country">الدولة</string>
+    <string name="no_reports">لا توجد بلاغات</string>
+    <string name="date">21 أغسطس 2026</string>
+    <string name="status">قيد الانتظار</string>
+    <string name="view_report">عرض البلاغ</string>
+    <string name="product">المنتج</string>
+    <string name="report_description">وصف البلاغ</string>
+    <string name="dismiss_report">تجاهل البلاغ</string>
+    <string name="warn_reporter">تحذير المُبلّغ</string>
+    <string name="warn_product_owner">تحذير صاحب المنتج</string>
+    <string name="remove_product">إزالة المنتج</string>
+    <string name="block_product_owner">حظر صاحب المنتج</string>
+    <string name="warning">⚠️ تحذير</string>
+    <string name="my_warnings"> تحذيراتي </string>
+    <string name="you_don_t_have_any_warnings">ليس لديك أي تحذيرات </string>
+</resources>

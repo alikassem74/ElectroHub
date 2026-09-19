@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "311583776227",
+    "project_id": "electrohub-78acf",
+    "storage_bucket": "electrohub-78acf.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311583776227:android:0b47f2c294b336bfe694d6",
+        "android_client_info": {
+          "package_name": "com.example.electrohub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhHqOV24ggD1OdAQYOGcf2jCct489Dnls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

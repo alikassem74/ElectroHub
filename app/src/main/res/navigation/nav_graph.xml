@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/SplashFragment">
+    <!-- Splash Screen -->
+
+    <fragment
+
+        android:id="@+id/SplashFragment"
+
+        android:name="com.example.electrohub.fragments.SplashFragment"
+
+        android:label="SplashFragment"
+
+        tools:layout="@layout/fragment_splash">
+
+
+        <action
+
+            android:id="@+id/action_splashFragment_to_loginFragment"
+
+            app:destination="@id/LoginFragment" />
+
+
+        <action
+
+            android:id="@+id/action_splashFragment_to_homeFragment"
+
+            app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/action_SplashFragment_to_EmailVerificationFragment"
+            app:destination="@id/EmailVerificationFragment" />
+
+
+    </fragment>
+
+    <!-- Login Screen -->
+
+    <fragment
+
+        android:id="@+id/LoginFragment"
+
+        android:name="com.example.electrohub.fragments.LoginFragment"
+
+        android:label="LoginFragment"
+
+        tools:layout="@layout/fragment_login">
+
+
+        <action
+
+            android:id="@+id/action_loginFragment_to_registerFragment"
+
+            app:destination="@id/RegisterFragment" />
+
+
+        <action
+
+            android:id="@+id/action_loginFragment_to_homeFragment"
+
+            app:destination="@id/HomeFragment" />
+
+
+    </fragment>
+
+    <!-- Register Screen -->
+
+    <fragment
+
+        android:id="@+id/RegisterFragment"
+
+        android:name="com.example.electrohub.fragments.RegisterFragment"
+
+        android:label="RegisterFragment"
+
+        tools:layout="@layout/fragment_register">
+
+
+        <action
+
+            android:id="@+id/action_registerFragment_to_loginFragment"
+
+            app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/action_RegisterFragment_to_EmailVerificationFragment"
+            app:destination="@id/EmailVerificationFragment" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/EmailVerificationFragment"
+
+        android:name="com.example.electrohub.fragments.EmailVerificationFragment"
+
+        android:label="EmailVerificationFragment"
+
+        tools:layout="@layout/fragment_email_verification">
+
+        <action
+            android:id="@+id/action_EmailVerificationFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+    </fragment>
+
+    <!-- Home Screen -->
+
+    <fragment
+
+        android:id="@+id/HomeFragment"
+
+        android:name="com.example.electrohub.fragments.HomeFragment"
+
+        android:label="HomeFragment"
+
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_HomeFragment_to_AddProductsFragment"
+            app:destination="@id/AddProductsFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_ProductDetailsFragment"
+            app:destination="@id/ProductDetailsFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_SaveForLaterFragment"
+            app:destination="@id/SaveForLaterFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_ProfileFragment"
+            app:destination="@id/ProfileFragment" />
+    </fragment>
+
+    <!-- Add Product Screen -->
+    <fragment
+
+        android:id="@+id/AddProductsFragment"
+
+        android:name="com.example.electrohub.fragments.AddProductsFragment"
+
+        android:label="AddProductsFragment"
+
+        tools:layout="@layout/fragment_add_products">
+        <action
+            android:id="@+id/action_AddProductsFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+    </fragment>
+
+    <!-- Product Details Screen -->
+    <fragment
+
+        android:id="@+id/ProductDetailsFragment"
+
+        android:name="com.example.electrohub.fragments.ProductDetailsFragment"
+
+        android:label="ProductDetailsFragment"
+
+        tools:layout="@layout/fragment_product_details"
+
+        >
+        <argument
+            android:name="productId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_ProductDetailsFragment_to_ChatFragment"
+            app:destination="@id/ChatFragment" />
+        <action
+            android:id="@+id/action_ProductDetailsFragment_to_ReportFragment"
+            app:destination="@id/ReportFragment" />
+        <action
+            android:id="@+id/action_ProductDetailsFragment_to_AddProductsFragment"
+            app:destination="@id/AddProductsFragment" />
+
+    </fragment>
+
+    <!-- Chat Screen -->
+    <fragment
+
+        android:id="@+id/ChatFragment"
+
+        android:name="com.example.electrohub.fragments.ChatFragment"
+
+        android:label="ChatFragment"
+
+        tools:layout="@layout/fragment_chat"
+
+        >
+        <argument
+            android:name="chatId"
+            app:argType="string" />
+    </fragment>
+
+    <!-- Saved Products Screen -->
+    <fragment
+        android:id="@+id/SaveForLaterFragment"
+
+        android:name="com.example.electrohub.fragments.SavedForLaterFragment"
+
+        android:label="SaveForLaterFragment"
+
+        tools:layout="@layout/fragment_saved_for_later"
+
+        >
+        <action
+            android:id="@+id/action_SaveForLaterFragment_to_ProductDetailsFragment"
+            app:destination="@id/ProductDetailsFragment" />
+    </fragment>
+
+    <!-- Profile Screen -->
+    <fragment
+        android:id="@+id/ProfileFragment"
+
+        android:name="com.example.electrohub.fragments.ProfileFragment"
+
+        android:label="ProfileFragment"
+
+        tools:layout="@layout/fragment_profile"
+
+        >
+
+        <action
+            android:id="@+id/action_ProfileFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/action_ProfileFragment_to_SaveForLaterFragment"
+            app:destination="@id/SaveForLaterFragment" />
+        <action
+            android:id="@+id/action_ProfileFragment_to_MyProductsFragment"
+            app:destination="@id/MyProductsFragment" />
+        <action
+            android:id="@+id/action_ProfileFragment_to_MyChatsFragment"
+            app:destination="@id/MyChatsFragment" />
+        <action
+            android:id="@+id/action_ProfileFragment_to_SettingsFragment"
+            app:destination="@id/SettingsFragment" />
+        <action
+            android:id="@+id/action_ProfileFragment_to_AdminReportsFragment"
+            app:destination="@id/AdminReportsFragment" />
+        <action
+            android:id="@+id/action_ProfileFragment_to_WarningsFragment"
+            app:destination="@id/WarningsFragment" />
+    </fragment>
+
+    <!-- MyProducts Screen -->
+    <fragment
+        android:id="@+id/MyProductsFragment"
+
+        android:name="com.example.electrohub.fragments.MyProductsFragment"
+
+        android:label="MyProducts"
+
+        tools:layout="@layout/fragment_my_products"
+
+        >
+        <action
+            android:id="@+id/action_MyProductsFragment_to_ProductDetailsFragment"
+            app:destination="@id/ProductDetailsFragment" />
+        <argument
+            android:name="productId"
+            app:argType="string" />
+    </fragment>
+
+    <!-- MyChats Screen -->
+    <fragment
+        android:id="@+id/MyChatsFragment"
+
+        android:name="com.example.electrohub.fragments.MyChatsFragment"
+
+        android:label="MyChats"
+
+        tools:layout="@layout/fragment_my_products"
+
+        >
+
+        <argument
+            android:name="chatId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_MyChatsFragment_to_ChatFragment"
+            app:destination="@id/ChatFragment" />
+    </fragment>
+
+    <!-- Report Screen -->
+    <fragment
+        android:id="@+id/ReportFragment"
+        android:name="com.example.electrohub.fragments.ReportFragment"
+        android:label="ReportFragment"
+        tools:layout="@layout/fragment_report"
+        >
+
+        <argument
+            android:name="productId"
+            app:argType="string" />
+
+        <argument
+            android:name="sellerId"
+            app:argType="string" />
+
+        <argument
+            android:name="productName"
+            app:argType="string" />
+
+    </fragment>
+    <!-- Report Screen -->
+    <fragment
+        android:id="@+id/SettingsFragment"
+        android:name="com.example.electrohub.fragments.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings"
+        >
+        <action
+            android:id="@+id/action_SettingsFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+    </fragment>
+    <!-- AdminReports Screen -->
+
+    <fragment
+        android:id="@+id/AdminReportsFragment"
+        android:name="com.example.electrohub.fragments.AdminReportsFragment"
+        android:label="Admin Reports"
+        tools:layout="@layout/fragment_admin_reports"
+        >
+
+
+        <action
+            android:id="@+id/action_AdminReportsFragment_to_AdminReportsDetailFragment"
+            app:destination="@id/AdminReportsDetailFragment" />
+    </fragment>
+
+    <!-- AdminReportDetails Screen -->
+    <fragment
+        android:id="@+id/AdminReportsDetailFragment"
+        android:name="com.example.electrohub.fragments.AdminReportDetailsFragment"
+        android:label="Report Details"
+        tools:layout="@layout/fragment_admin_report_details"
+        >
+
+        <argument
+            android:name="reportId"
+            app:argType="string" />
+
+        <argument
+            android:name="productId"
+            app:argType="string" />
+
+        <argument
+            android:name="productOwnerId"
+            app:argType="string" />
+
+        <argument
+            android:name="productName"
+            app:argType="string" />
+
+        <argument
+            android:name="reason"
+            app:argType="string" />
+
+        <argument
+            android:name="description"
+            app:argType="string" />
+
+        <argument
+            android:name="reporterId"
+            app:argType="string" />
+
+        <argument
+            android:name="timestamp"
+            app:argType="string" />
+
+        <argument
+            android:name="status"
+            app:argType="string" />
+
+
+    </fragment>
+
+    <!-- Warnings Screen -->
+    <fragment
+        android:id="@+id/WarningsFragment"
+        android:name="com.example.electrohub.fragments.WarningsFragment"
+        android:label="Warnings"
+        tools:layout="@layout/fragment_warnings">
+
+    </fragment>
+
+</navigation>

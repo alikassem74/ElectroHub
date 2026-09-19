@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.RegisterFragment"
+
+    >
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+        android:orientation="vertical"
+
+        android:padding="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            android:contentDescription="ElectroHub Logo"
+
+            android:src="@drawable/electrohub_logo" />
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="20dp"
+
+            android:text="@string/create_account"
+
+            android:textColor="@color/black"
+
+            android:textSize="30sp"
+
+            android:textStyle="bold" />
+
+
+        <EditText
+
+            android:id="@+id/etxt_Name"
+
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+
+            android:layout_marginTop="30dp"
+
+            android:background="@drawable/etxt_background"
+
+            android:hint="@string/full_name"
+
+            android:padding="15dp" />
+
+
+        <EditText
+
+            android:id="@+id/etxt_Email"
+
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+
+            android:layout_marginTop="15dp"
+
+            android:background="@drawable/etxt_background"
+
+            android:hint="@string/email"
+
+            android:inputType="textEmailAddress"
+
+            android:padding="15dp" />
+
+
+        <EditText
+
+            android:id="@+id/etxt_Password"
+
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+
+            android:layout_marginTop="15dp"
+
+            android:background="@drawable/etxt_background"
+
+            android:hint="@string/password"
+
+            android:inputType="textPassword"
+
+            android:padding="15dp" />
+
+
+        <EditText
+
+            android:id="@+id/etxt_ConfirmPassword"
+
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+
+            android:layout_marginTop="15dp"
+
+            android:background="@drawable/etxt_background"
+
+            android:hint="@string/confirm_password"
+
+            android:inputType="textPassword"
+
+            android:padding="15dp" />
+
+        <!-- Country -->
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="15dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/acTxt_Country"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/country"
+                android:inputType="none"
+                android:padding="15dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Region -->
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="15dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/acTxt_Region"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/region"
+                android:inputType="none"
+                android:padding="15dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+
+            android:id="@+id/btn_Register"
+
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+
+            android:layout_marginTop="25dp"
+            android:backgroundTint="@color/black"
+            android:text="@string/register"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="20dp"
+            app:rippleColor="@color/green" />
+
+
+        <TextView
+
+            android:id="@+id/txt_Login"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="20dp"
+
+            android:text="@string/already_have_an_account_login"
+
+            android:textColor="@color/black"
+
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:indeterminateTint="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
