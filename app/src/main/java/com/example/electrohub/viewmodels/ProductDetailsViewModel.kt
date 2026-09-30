@@ -90,7 +90,7 @@ class ProductDetailsViewModel : ViewModel() {
 
     fun getCurrentUserId(): String {
 
-        return _userRepository.getCurrentUserId()
+        return _userRepository.getCurrentUserId()?:"Null Id"
     }
 
 

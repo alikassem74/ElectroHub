@@ -41,7 +41,7 @@
     <string name="write_a_message">Write a message...</string>
     <string name="send">Send</string>
     <string name="hello">Hello</string>
-    <string name="saved">Saved For Later</string>
+    <string name="saved">Saved</string>
     <string name="saved_for_later">Saved For Later</string>
     <string name="profile_image">Profile Image</string>
     <string name="my_products">My Products</string>
@@ -96,4 +96,13 @@
     <string name="warning">⚠️ Warning</string>
     <string name="my_warnings">My Warnings</string>
     <string name="you_don_t_have_any_warnings">You don\'t have any warnings.</string>
+    <string name="describe_app"><![CDATA[Buy & sell electronics]]></string>
+    <string name="home">Home</string>
+    <string name="favorite">favorite</string>
+    <string name="product_image">Product Image</string>
+    <string name="you_haven_t_saved_any_products_yet">Your Saved List is Empty.</string>
+    <string name="delete">delete</string>
+    <string name="empty">Empty</string>
+    <string name="tab_the_heart_on_posts_you_love">Tab the heart on Posts You Love!</string>
+    <string name="shop_all">Shop All</string>
 </resources>

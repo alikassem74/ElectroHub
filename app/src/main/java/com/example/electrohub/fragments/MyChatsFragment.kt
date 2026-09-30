@@ -37,10 +37,7 @@ class MyChatsFragment :
             ChatsAdapter
 
 
-    // =========================================================
     // CREATE VIEW
-    // =========================================================
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -58,10 +55,7 @@ class MyChatsFragment :
     }
 
 
-    // =========================================================
     // VIEW CREATED
-    // =========================================================
-
     override fun onViewCreated(
         view: View,
         savedInstanceState: Bundle?
@@ -78,11 +72,7 @@ class MyChatsFragment :
         _viewModel.loadMyChats()
     }
 
-
-    // =========================================================
     // VIEWS
-    // =========================================================
-
     private fun setViews() {
 
         _binding.rvChats.layoutManager =
@@ -113,9 +103,7 @@ class MyChatsFragment :
     }
 
 
-    // =========================================================
     // OBSERVE CHATS
-    // =========================================================
 
     private fun observeChats() {
 
@@ -131,16 +119,30 @@ class MyChatsFragment :
                         chatAdapter.updateChats(
                             ArrayList(chats)
                         )
+                        if (chats.isEmpty()) {
+
+                            _binding.llEmpty.visibility =
+                                View.VISIBLE
+
+                            _binding.rvChats.visibility =
+                                View.GONE
+
+                        } else {
+
+                            _binding.llEmpty.visibility =
+                                View.GONE
+
+                            _binding.rvChats.visibility =
+                                View.VISIBLE
+                        }
                     }
             }
         }
     }
 
 
-    // =========================================================
-    // OPEN CHAT
-    // =========================================================
 
+    // OPEN CHAT
     override fun onChatClick(
         chat: ChatDisplay
     ) {
@@ -162,10 +164,7 @@ class MyChatsFragment :
     }
 
 
-    // =========================================================
     // DELETE / HIDE CHAT
-    // =========================================================
-
     override fun onDeleteChat(
         chat: ChatDisplay
     ) {
@@ -179,10 +178,7 @@ class MyChatsFragment :
     }
 
 
-    // =========================================================
     // DESTROY VIEW
-    // =========================================================
-
     override fun onDestroyView() {
 
         super.onDestroyView()

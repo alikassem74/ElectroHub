@@ -59,11 +59,7 @@ class ProductDetailsFragment : Fragment() {
         getProduct()
     }
 
-
-    // =========================================================
     // GET PRODUCT
-    // =========================================================
-
     private fun getProduct() {
 
         val productId =
@@ -76,10 +72,8 @@ class ProductDetailsFragment : Fragment() {
     }
 
 
-    // =========================================================
-    // OBSERVERS
-    // =========================================================
 
+    // OBSERVERS
     private fun setObservers() {
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -110,10 +104,7 @@ class ProductDetailsFragment : Fragment() {
 
 
 
-                            // =====================================
                             // PRODUCT IMAGES
-                            // =====================================
-
                             val imageAdapter =
                                 ProductDetailImagesAdapter(
                                     ArrayList(
@@ -137,11 +128,7 @@ class ProductDetailsFragment : Fragment() {
                     }
                 }
 
-
-                // =============================================
                 // SAVED PRODUCT
-                // =============================================
-
                 launch {
 
                     _viewModel.isSaved.collect { isSaved ->
@@ -149,23 +136,19 @@ class ProductDetailsFragment : Fragment() {
                         if (isSaved) {
 
                             _binding.btnSave.setImageResource(
-                                R.drawable.star_logo
+                                R.drawable.ic_favorite
                             )
 
                         } else {
 
                             _binding.btnSave.setImageResource(
-                                R.drawable.emptystar_logo
+                                R.drawable.ic_favorite_border
                             )
                         }
                     }
                 }
 
-
-                // =============================================
                 // DELETE RESULT
-                // =============================================
-
                 launch {
 
                     _viewModel.deleteResult.collect { result ->
@@ -195,10 +178,7 @@ class ProductDetailsFragment : Fragment() {
                 }
 
 
-                // =============================================
                 // OWNER
-                // =============================================
-
                 launch {
                     _viewModel.owner.collect { user ->
 
@@ -231,11 +211,7 @@ class ProductDetailsFragment : Fragment() {
         }
     }
 
-
-    // =========================================================
     // OWNER ACTIONS
-    // =========================================================
-
     private fun checkOwnerActions() {
 
         val currentUserId = _viewModel.getCurrentUserId()
@@ -268,10 +244,8 @@ class ProductDetailsFragment : Fragment() {
     }
 
 
-    // =========================================================
-    // VIEWS
-    // =========================================================
 
+    // VIEWS
     private fun setViews() {
 
         // Back
@@ -387,11 +361,7 @@ class ProductDetailsFragment : Fragment() {
         }
     }
 
-
-    // =========================================================
     // DELETE DIALOG
-    // =========================================================
-
     private fun showDeleteDialog(
         product: Products
     ) {

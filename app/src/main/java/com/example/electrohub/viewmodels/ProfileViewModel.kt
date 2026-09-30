@@ -127,7 +127,7 @@ class ProfileViewModel : ViewModel() {
             userRepository.getCurrentUserId()
 
         _isAdmin.value =
-            currentUserId.isNotEmpty() &&
+            currentUserId != null &&
                     currentUserId == "WnLBVcVojVfuzmDDKoNYpq8R1qn2"
     }
 }

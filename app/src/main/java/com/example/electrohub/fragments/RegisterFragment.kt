@@ -96,16 +96,9 @@ class RegisterFragment : Fragment() {
                 valid = false
             }
 
-            if (
-                password.length < 8 ||
-                !hasUppercase(password) ||
-                !hasLowercase(password) ||
-                !hasNumber(password) ||
-                !hasSpecialCharacter(password)
-            ) {
+            if (!isPasswordValid(password)) {
 
-                _binding.etxtPassword.error =
-                    "Invalid Password"
+                _binding.etxtPassword.error = "Password must contain 8+ characters, uppercase, lowercase, number, and special character"
 
                 valid = false
             }
@@ -177,11 +170,9 @@ class RegisterFragment : Fragment() {
                 launch {
 
                     _viewModel.registerResult.collect { userId ->
-
                         if (userId == null) {
                             return@collect
                         }
-
                         Toast.makeText(
                             requireContext(),
                             "Account Created",
@@ -321,5 +312,12 @@ class RegisterFragment : Fragment() {
             !it.isLetterOrDigit()
         }
     }
-}
+    private fun isPasswordValid(password: String): Boolean {
 
+        return password.length >= 8 &&
+                hasUppercase(password) &&
+                hasLowercase(password) &&
+                hasNumber(password) &&
+                hasSpecialCharacter(password)
+    }
+}

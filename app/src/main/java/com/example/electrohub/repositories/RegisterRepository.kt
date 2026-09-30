@@ -7,6 +7,7 @@ import com.example.electrohub.base.DataStoreManager
 import com.example.electrohub.models.Users
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.tasks.await
 
 class RegisterRepository {
@@ -24,12 +25,12 @@ class RegisterRepository {
 
         return try {
 
-            val uid = createFirebaseAccount(
+            val firebaseUser = createFirebaseAccount(
                 email,
                 password
             )
 
-            sendVerificationEmail()
+            firebaseUser.sendEmailVerification().await()
 
             val user = createUser(
                 name,
@@ -39,11 +40,11 @@ class RegisterRepository {
             )
 
             saveUser(
-                uid,
+                firebaseUser.uid,
                 user
             )
 
-            Result.success(uid)
+            Result.success(firebaseUser.uid)
 
         } catch (e: Exception) {
 
@@ -56,16 +57,15 @@ class RegisterRepository {
     private suspend fun createFirebaseAccount(
         email: String,
         password: String
-    ): String {
+    ): FirebaseUser {
 
-        val result =
-            auth.createUserWithEmailAndPassword(
-                email,
-                password
-            ).await()
+        val result = auth.createUserWithEmailAndPassword(
+            email,
+            password
+        ).await()
 
-        return result.user?.uid
-            ?: throw Exception("User ID is null")
+        return result.user
+            ?: throw Exception("User is null")
     }
 
     private suspend fun sendVerificationEmail() {

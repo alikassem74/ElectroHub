@@ -18,44 +18,23 @@ class HomeViewModel : ViewModel() {
         UsersRepository()
 
 
-    private var allProducts =
-        listOf<Products>()
+    private var allProducts = listOf<Products>()
+    private var sortedProducts = listOf<Products>()
+    private val _products = MutableStateFlow<List<Products>>(emptyList())
 
-    private var sortedProducts =
-        listOf<Products>()
+    val products = _products.asStateFlow()
 
-
-    private val _products =
-        MutableStateFlow<List<Products>>(
-            emptyList()
-        )
-
-    val products =
-        _products.asStateFlow()
-
-
-    // =========================================================
     // LOAD PRODUCTS
-    // =========================================================
-
     fun loadProducts() {
 
         viewModelScope.launch {
 
-            val currentUserId =
-                userRepository.getCurrentUserId()
+            val currentUserId = userRepository.getCurrentUserId()
+            val currentUser = userRepository.getUserById(currentUserId?:"Null Id")
 
-            val currentUser =
-                userRepository.getUserById(
-                    currentUserId
-                )
-
-
-            repository.getProducts()
+            repository.getRecentProducts()
                 .collect { products ->
-
-                    allProducts =
-                        products
+                    allProducts = products
 
 
                     // IMPORTANT:
@@ -85,19 +64,12 @@ class HomeViewModel : ViewModel() {
 
                             products
                         }
-
-
-                    _products.value =
-                        sortedProducts
+                    _products.value = sortedProducts
                 }
         }
     }
 
-
-    // =========================================================
     // SEARCH PRODUCTS
-    // =========================================================
-
     fun searchProducts(
         query: String
     ) {

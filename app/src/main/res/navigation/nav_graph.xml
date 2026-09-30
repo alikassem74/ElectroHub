@@ -116,9 +116,6 @@
 
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_HomeFragment_to_AddProductsFragment"
-            app:destination="@id/AddProductsFragment" />
-        <action
             android:id="@+id/action_HomeFragment_to_ProductDetailsFragment"
             app:destination="@id/ProductDetailsFragment" />
         <action
@@ -127,6 +124,9 @@
         <action
             android:id="@+id/action_HomeFragment_to_ProfileFragment"
             app:destination="@id/ProfileFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_AllProductsFragment"
+            app:destination="@id/AllProductsFragment" />
     </fragment>
 
     <!-- Add Product Screen -->
@@ -202,6 +202,15 @@
         <action
             android:id="@+id/action_SaveForLaterFragment_to_ProductDetailsFragment"
             app:destination="@id/ProductDetailsFragment" />
+        <action
+            android:id="@+id/action_SaveForLaterFragment_to_ProfileFragment"
+            app:destination="@id/ProfileFragment" />
+        <action
+            android:id="@+id/action_SaveForLaterFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/action_SaveForLaterFragment_to_AllProductsFragment"
+            app:destination="@id/AllProductsFragment" />
     </fragment>
 
     <!-- Profile Screen -->
@@ -237,6 +246,15 @@
         <action
             android:id="@+id/action_ProfileFragment_to_WarningsFragment"
             app:destination="@id/WarningsFragment" />
+        <action
+            android:id="@+id/action_ProfileFragment_to_AddProductsFragment"
+            app:destination="@id/AddProductsFragment" />
+        <action
+            android:id="@+id/action_ProfileFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/action_ProfileFragment_to_AllProductsFragment"
+            app:destination="@id/AllProductsFragment" />
     </fragment>
 
     <!-- MyProducts Screen -->
@@ -378,6 +396,31 @@
         android:name="com.example.electrohub.fragments.WarningsFragment"
         android:label="Warnings"
         tools:layout="@layout/fragment_warnings">
+
+    </fragment>
+
+    <!-- All Products Screen -->
+    <fragment
+        android:id="@+id/AllProductsFragment"
+        android:name="com.example.electrohub.fragments.AllProductsFragment"
+        android:label="AllProducts"
+        tools:layout="@layout/fragment_all_products">
+
+        <argument
+            android:name="categoryId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_AllProductsFragment_to_ProductDetailsFragment"
+            app:destination="@id/ProductDetailsFragment" />
+        <action
+            android:id="@+id/action_AllProductsFragment_to_SaveForLaterFragment"
+            app:destination="@id/SaveForLaterFragment" />
+        <action
+            android:id="@+id/action_AllProductsFragment_to_ProfileFragment"
+            app:destination="@id/ProfileFragment" />
+        <action
+            android:id="@+id/action_AllProductsFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
 
     </fragment>
 

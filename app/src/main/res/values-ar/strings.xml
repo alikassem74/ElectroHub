@@ -176,4 +176,14 @@
     <string name="warning">⚠️ تحذير</string>
     <string name="my_warnings"> تحذيراتي </string>
     <string name="you_don_t_have_any_warnings">ليس لديك أي تحذيرات </string>
+
+    <string name="describe_app"><![CDATA[شراء وبيع الأجهزة الإلكترونية]]></string>
+    <string name="home">الرئيسية</string>
+    <string name="favorite">المفضلة</string>
+    <string name="product_image">صورة المنتج</string>
+    <string name="you_haven_t_saved_any_products_yet">قائمة المحفوظات فارغة.</string>
+    <string name="delete">حذف</string>
+    <string name="empty">فارغ</string>
+    <string name="tab_the_heart_on_posts_you_love">اضغط على القلب في المنشورات التي تعجبك!</string>
+    <string name="shop_all">تسوق الكل</string>
 </resources>

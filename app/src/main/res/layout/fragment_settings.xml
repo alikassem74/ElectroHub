@@ -10,24 +10,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-
-        android:padding="20dp">
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        >
 
         <!-- Title -->
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:background="@color/black"
         android:orientation="horizontal">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/btn_Back"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:background="@color/black"
             android:contentDescription="@string/back"
-            android:src="@drawable/back" />
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/black" />
 
         <TextView
             android:id="@+id/txtVSettingsTitle"
@@ -35,13 +37,17 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:background="@color/black"
             android:text="@string/settings"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            android:textStyle="bold" />
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- ========================= -->
         <!-- Language -->

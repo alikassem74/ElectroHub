@@ -18,6 +18,8 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
+import com.google.firebase.firestore.Query
+
 
 class ProductsRepository {
 
@@ -25,11 +27,7 @@ class ProductsRepository {
 
     private val productsCollection = firestore.collection("products")
 
-
-    // ============================================================
     // ADD PRODUCT
-    // ============================================================
-
     suspend fun addProduct(
         product: Products
     ): Result<Unit> {
@@ -55,54 +53,67 @@ class ProductsRepository {
     }
 
 
-    // ============================================================
     // GET PRODUCTS - REAL TIME
-    // ============================================================
-
-    fun getProducts(): Flow<List<Products>> =
+    fun getProducts(
+        category: String? = null,
+        minPrice: Double? = null,
+        maxPrice: Double? = null
+    ): Flow<List<Products>> =
         callbackFlow {
 
-            val listenerRegistration = productsCollection.addSnapshotListener { snapshot, error ->
+            var query: Query = productsCollection
 
-                        if (error != null) {
+            if (category != null) {
+                query = query.whereEqualTo("category", category)
+            }
 
-                            trySend(emptyList())
-
-                            return@addSnapshotListener
-                        }
-
-                        val products =
-                            snapshot
-                                ?.documents
-                                ?.mapNotNull { document ->
-
-                                    document
-                                        .toObject(
-                                            Products::class.java
-                                        )
-                                        ?.copy(
-                                            productId =
-                                                document.id
-                                        )
-                                }
-                                ?: emptyList()
+            if (minPrice != null && maxPrice !=null) {
+                query = query.whereGreaterThanOrEqualTo("price", minPrice)
+                query = query.whereLessThanOrEqualTo("price", maxPrice)
+            }
+            if (minPrice != null && maxPrice ==null) {
+                query = query.whereGreaterThanOrEqualTo("price", minPrice)
+            }
 
 
-                        trySend(products)
+            val listenerRegistration =
+                query.addSnapshotListener { snapshot, error ->
+
+                    if (error != null) {
+
+                        Log.e(
+                            "GetProducts",
+                            "Failed to get products",
+                            error
+                        )
+
+                        return@addSnapshotListener
                     }
 
+                    val products =
+                        snapshot
+                            ?.documents
+                            ?.mapNotNull { document ->
+                                document
+                                    .toObject(Products::class.java)
+                                    ?.copy(productId = document.id)
+                            }
+                            ?: emptyList()
+
+                    Log.d(
+                        "GetProducts",
+                        "Products: ${products.size}"
+                    )
+
+                    trySend(products)
+                }
 
             awaitClose {
-
                 listenerRegistration.remove()
             }
         }
 
-
-    // ============================================================
     // GET OWNER DATA
-    // ============================================================
-
     suspend fun getOwnerData(
         context: Context
     ): Pair<String, String> {
@@ -130,10 +141,7 @@ class ProductsRepository {
     }
 
 
-    // ============================================================
     // UPLOAD IMAGES
-    // ============================================================
-
     suspend fun uploadImages(
         images: List<Uri>
     ): List<CloudinaryImage> {
@@ -259,10 +267,8 @@ class ProductsRepository {
     }
 
 
-    // ============================================================
-    // GET PRODUCT BY ID
-    // ============================================================
 
+    // GET PRODUCT BY ID
     suspend fun getProductById(
         productId: String
     ): Products? {
@@ -298,10 +304,7 @@ class ProductsRepository {
     }
 
 
-    // ============================================================
     // UPDATE PRODUCT
-    // ============================================================
-
     suspend fun updateProduct(
         product: Products,
         deletedImagePublicIds: List<String>
@@ -309,10 +312,7 @@ class ProductsRepository {
 
         return try {
 
-            // ========================================================
             // UPDATE FIRESTORE
-            // ========================================================
-
             productsCollection
                 .document(product.productId)
                 .set(product)
@@ -346,4 +346,47 @@ class ProductsRepository {
             Result.failure(e)
         }
     }
+    //PRODUCTS FOR HOME PAGE
+    fun getRecentProducts(): Flow<List<Products>> =
+        callbackFlow {
+
+            val listenerRegistration =
+                productsCollection
+                    .orderBy(
+                        "createdAt",
+                        Query.Direction.DESCENDING
+                    )
+                    .limit(12)
+                    .addSnapshotListener { snapshot, error ->
+
+                        if (error != null) {
+
+                            trySend(emptyList())
+
+                            return@addSnapshotListener
+                        }
+
+                        val products =
+                            snapshot
+                                ?.documents
+                                ?.mapNotNull { document ->
+
+                                    document
+                                        .toObject(
+                                            Products::class.java
+                                        )
+                                        ?.copy(
+                                            productId =
+                                                document.id
+                                        )
+                                }
+                                ?: emptyList()
+
+                        trySend(products)
+                    }
+
+            awaitClose {
+                listenerRegistration.remove()
+            }
+        }
 }

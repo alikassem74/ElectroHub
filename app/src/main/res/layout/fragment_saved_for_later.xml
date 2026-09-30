@@ -4,52 +4,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp"
     >
 
-    <LinearLayout
-
-        android:id="@+id/topBar"
-
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/txtProfileTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:gravity="center_vertical"
-        android:background="@color/black"
-        android:orientation="horizontal"
-
-        android:padding="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/saved_for_later"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:id="@+id/btn_Back"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@color/black"
-            android:contentDescription="@string/back"
-            android:src="@drawable/back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-
-            android:layout_weight="1"
-
-            android:text="@string/saved_for_later"
-
-            android:textSize="28sp"
-            android:textAlignment="center"
-            android:textStyle="bold"
-            android:background="@color/black"
-            android:textColor="@color/white"/>
-
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
 
@@ -57,25 +30,67 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topBar"
+
+        app:layout_constraintTop_toBottomOf="@+id/txtProfileTitle"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/txtV_Empty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="You haven't saved any products yet."
-        android:textColor="@color/black"
-        android:textSize="18sp"
+    <LinearLayout
+        android:id="@+id/ll_Empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/topBar"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/topBar">
+
+        <ImageView
+            android:layout_width="406dp"
+            android:layout_height="200dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/empty"
+            android:src="@drawable/empty_white_box_svgrepo_com"
+            app:tint="@color/black"
+            tools:layout_editor_absoluteX="8dp" />
+
+        <TextView
+            android:id="@+id/txtV_Empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/you_haven_t_saved_any_products_yet"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tab_the_heart_on_posts_you_love"
+            android:textAlignment="center"
+            android:textColor="@color/gray"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <!-- Bottom navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@color/white"
+        app:itemIconTint="@color/bottom_nav_item_color"
+        app:itemTextColor="@color/bottom_nav_item_color"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_menu" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

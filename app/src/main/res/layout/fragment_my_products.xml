@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    >
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
 
         android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="20dp"
-        android:background="@color/black"
-        >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/btn_Back"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:background="@color/black"
             android:contentDescription="@string/back"
-            android:src="@drawable/back"
-             />
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/black" />
 
         <TextView
 
@@ -35,19 +37,66 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/my_products"
-            android:textSize="28sp"
-            android:textAlignment="center"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:background="@color/black"
-            android:textColor="@color/white"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/ll_Empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topBar">
+
+        <ImageView
+            android:layout_width="406dp"
+            android:layout_height="200dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/empty"
+            android:src="@drawable/empty_white_box_svgrepo_com"
+            app:tint="@color/black"
+            tools:layout_editor_absoluteX="8dp" />
+
+        <TextView
+            android:id="@+id/txtV_Empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You Have No Products Yet"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sell Your First Product"
+            android:textAlignment="center"
+            android:textColor="@color/gray"
+            android:textSize="24sp" />
+
     </LinearLayout>
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_MyProducts"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="16dp"/>
+        android:layout_height="0dp"
+        android:paddingTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topBar"
+        app:layout_constraintVertical_bias="0.479" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

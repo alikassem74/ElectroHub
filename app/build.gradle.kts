@@ -62,7 +62,7 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
 
     //cloudinary
-    implementation(libs.cloudinary.android)
+    implementation(libs.cloudinary.android.core)
 
     //glide
     implementation(libs.glide)

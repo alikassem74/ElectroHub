@@ -12,7 +12,6 @@
         android:id="@+id/imgV_Product"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
         android:contentDescription="Product Image"
         android:background="@color/black"
         app:layout_constraintTop_toTopOf="parent"

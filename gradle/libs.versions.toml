@@ -18,7 +18,7 @@ googleid = "1.2.0"
 firebaseFirestore = "26.4.1"
 datastorePreferences="1.1.2"
 firebaseStorage = "22.0.1"
-cloudinary = "2.5.0"
+cloudinary = "3.1.2"
 glide = "4.16.0"
 firebaseMessaging = "25.1.1"
 
@@ -43,7 +43,7 @@ coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 androidx-datastore-preferences={module="androidx.datastore:datastore-preferences",version.ref="datastorePreferences"}
 firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorage" }
-cloudinary-android = { module = "com.cloudinary:cloudinary-android", version.ref = "cloudinary" }
+cloudinary-android-core = { module = "com.cloudinary:cloudinary-android-core", version.ref = "cloudinary" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
 

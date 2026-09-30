@@ -95,33 +95,11 @@ class ProfileFragment : Fragment() {
 
     private fun setViews() {
 
-        // -----------------------------------------------------
-        // BACK
-        // -----------------------------------------------------
-
-        _binding.btnBack.setOnClickListener {
-
-            findNavController()
-                .navigateUp()
+        _binding.btnAddProduct.setOnClickListener {
+            findNavController().navigate(R.id.action_ProfileFragment_to_AddProductsFragment)
         }
 
-
-        // -----------------------------------------------------
-        // SAVED PRODUCTS
-        // -----------------------------------------------------
-
-        _binding.btnSaved.setOnClickListener {
-
-            findNavController().navigate(
-                R.id.action_ProfileFragment_to_SaveForLaterFragment
-            )
-        }
-
-
-        // -----------------------------------------------------
         // MY PRODUCTS
-        // -----------------------------------------------------
-
         _binding.btnMyProducts.setOnClickListener {
 
             findNavController().navigate(
@@ -129,11 +107,7 @@ class ProfileFragment : Fragment() {
             )
         }
 
-
-        // -----------------------------------------------------
         // MY CHATS
-        // -----------------------------------------------------
-
         _binding.btnMyChats.setOnClickListener {
 
             findNavController().navigate(
@@ -141,11 +115,7 @@ class ProfileFragment : Fragment() {
             )
         }
 
-
-        // -----------------------------------------------------
         // MY WARNINGS
-        // -----------------------------------------------------
-
         _binding.btnMyWarnings.setOnClickListener {
 
             findNavController().navigate(
@@ -154,53 +124,67 @@ class ProfileFragment : Fragment() {
         }
 
 
-        // -----------------------------------------------------
         // PROFILE IMAGE
-        // -----------------------------------------------------
-
         _binding.imgVProfile.setOnClickListener {
 
             imagePicker.launch("image/*")
         }
 
-
-        // -----------------------------------------------------
         // SETTINGS
-        // -----------------------------------------------------
-
         _binding.btnSettings.setOnClickListener {
-
             findNavController().navigate(
                 R.id.action_ProfileFragment_to_SettingsFragment
             )
         }
 
-
-        // -----------------------------------------------------
         // ADMIN REPORTS
-        // -----------------------------------------------------
-
         _binding.btnAdminReports.setOnClickListener {
-
             findNavController().navigate(
                 R.id.action_ProfileFragment_to_AdminReportsFragment
             )
         }
 
+        _binding.bottomNavigation.selectedItemId = R.id.nav_Profile
 
-        // -----------------------------------------------------
+        _binding.bottomNavigation.setOnItemSelectedListener { item ->
+
+            when (item.itemId) {
+
+                R.id.nav_home -> {
+                    findNavController().navigate(R.id.action_ProfileFragment_to_HomeFragment)
+                    true
+                }
+
+                R.id.nav_SavedForLater -> {
+                    findNavController().navigate(
+                        R.id.action_ProfileFragment_to_SaveForLaterFragment
+                    )
+                    true
+                }
+
+                R.id.nav_ShopAll -> {
+                    findNavController().navigate(
+                        R.id.action_ProfileFragment_to_AllProductsFragment
+                    )
+                    true
+                }
+
+                R.id.nav_Profile -> {
+                    true
+                }
+
+                else -> false
+            }
+        }
+
+
+
         // LOGOUT LAPTOP ANIMATION
-        // -----------------------------------------------------
-
         _binding.btnLogout.setOnClickListener {
 
             // Immediately disable logout so it
             // cannot be pressed multiple times.
             _binding.btnLogout.isEnabled = false
-
-            _binding.laptopLogoutView.setMood(
-                LaptopView.Mood.ERROR
-            )
 
             viewLifecycleOwner.lifecycleScope.launch {
 
@@ -226,20 +210,6 @@ class ProfileFragment : Fragment() {
     private fun setProfileLoading(
         isLoading: Boolean
     ) {
-
-        _binding.progressBar.visibility =
-            if (isLoading) {
-                View.VISIBLE
-            } else {
-                View.GONE
-            }
-
-        _binding.btnBack.isEnabled =
-            !isLoading
-
-        _binding.btnSaved.isEnabled =
-            !isLoading
-
         _binding.btnMyProducts.isEnabled =
             !isLoading
 
@@ -262,11 +232,7 @@ class ProfileFragment : Fragment() {
             !isLoading
     }
 
-
-    // =========================================================
     // STATE FLOW OBSERVERS
-    // =========================================================
-
     private fun observeUser() {
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -274,11 +240,7 @@ class ProfileFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(
                 Lifecycle.State.STARTED
             ) {
-
-                // -------------------------------------------------
                 // LOADING
-                // -------------------------------------------------
-
                 launch {
 
                     _viewModel.isLoading
@@ -290,11 +252,7 @@ class ProfileFragment : Fragment() {
                         }
                 }
 
-
-                // -------------------------------------------------
                 // USER
-                // -------------------------------------------------
-
                 launch {
 
                     _viewModel.user
@@ -328,11 +286,7 @@ class ProfileFragment : Fragment() {
                         }
                 }
 
-
-                // -------------------------------------------------
                 // ADMIN
-                // -------------------------------------------------
-
                 launch {
 
                     _viewModel.isAdmin
@@ -350,11 +304,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
-
-    // =========================================================
     // DESTROY VIEW
-    // =========================================================
-
     override fun onDestroyView() {
 
         super.onDestroyView()

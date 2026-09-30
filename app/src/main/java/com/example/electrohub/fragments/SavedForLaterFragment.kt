@@ -29,11 +29,7 @@ class SavedForLaterFragment : Fragment(), IProductClickListener {
 
     private val _viewModel: SavedViewModel by viewModels()
 
-
-    // =========================================================
     // CREATE VIEW
-    // =========================================================
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -51,10 +47,7 @@ class SavedForLaterFragment : Fragment(), IProductClickListener {
     }
 
 
-    // =========================================================
     // VIEW CREATED
-    // =========================================================
-
     override fun onViewCreated(
         view: View,
         savedInstanceState: Bundle?
@@ -71,19 +64,38 @@ class SavedForLaterFragment : Fragment(), IProductClickListener {
         _viewModel.loadSavedProducts()
     }
 
-
-    // =========================================================
     // VIEWS
-    // =========================================================
-
     private fun setViews() {
+        _binding.bottomNavigation.selectedItemId = R.id.nav_SavedForLater
 
-        _binding.btnBack.setOnClickListener {
+        _binding.bottomNavigation.setOnItemSelectedListener { item ->
 
-            findNavController()
-                .navigateUp()
+            when (item.itemId) {
+
+                R.id.nav_home -> {
+                    findNavController().navigate(R.id.action_SaveForLaterFragment_to_HomeFragment)
+                    true
+                }
+
+                R.id.nav_SavedForLater -> {
+                    true
+                }
+
+                R.id.nav_ShopAll -> {
+                    findNavController().navigate(
+                        R.id.action_SaveForLaterFragment_to_AllProductsFragment
+                    )
+                    true
+                }
+                R.id.nav_Profile -> {
+                    findNavController().navigate(
+                        R.id.action_SaveForLaterFragment_to_ProfileFragment
+                    )
+                    true
+                }
+                else -> false
+            }
         }
-
 
         _binding.rvSavedProducts.layoutManager =
             GridLayoutManager(
@@ -106,11 +118,7 @@ class SavedForLaterFragment : Fragment(), IProductClickListener {
             adapter
     }
 
-
-    // =========================================================
     // OBSERVERS
-    // =========================================================
-
     private fun setObservers() {
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -129,7 +137,7 @@ class SavedForLaterFragment : Fragment(), IProductClickListener {
 
                         if (products.isEmpty()) {
 
-                            _binding.txtVEmpty.visibility =
+                            _binding.llEmpty.visibility =
                                 View.VISIBLE
 
                             _binding.rvSavedProducts.visibility =
@@ -137,7 +145,7 @@ class SavedForLaterFragment : Fragment(), IProductClickListener {
 
                         } else {
 
-                            _binding.txtVEmpty.visibility =
+                            _binding.llEmpty.visibility =
                                 View.GONE
 
                             _binding.rvSavedProducts.visibility =
@@ -149,10 +157,7 @@ class SavedForLaterFragment : Fragment(), IProductClickListener {
     }
 
 
-    // =========================================================
     // PRODUCT CLICK
-    // =========================================================
-
     override fun onProductClick(
         product: Products
     ) {
@@ -180,10 +185,8 @@ class SavedForLaterFragment : Fragment(), IProductClickListener {
     }
 
 
-    // =========================================================
-    // DESTROY VIEW
-    // =========================================================
 
+    // DESTROY VIEW
     override fun onDestroyView() {
 
         super.onDestroyView()

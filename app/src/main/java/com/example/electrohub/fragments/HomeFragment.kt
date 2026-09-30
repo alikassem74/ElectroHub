@@ -3,50 +3,48 @@ package com.example.electrohub.fragments
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.electrohub.R
+import com.example.electrohub.databinding.FragmentHomeBinding
+import com.example.electrohub.viewmodels.HomeViewModel
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.electrohub.R
 import com.example.electrohub.adapters.ProductsAdapter
-import com.example.electrohub.databinding.FragmentHomeBinding
 import com.example.electrohub.interfaces.IProductClickListener
 import com.example.electrohub.models.Products
-import com.example.electrohub.viewmodels.HomeViewModel
 import kotlinx.coroutines.launch
 
-class HomeFragment : Fragment(), IProductClickListener {
+class HomeFragment : Fragment(),IProductClickListener {
 
     private lateinit var _binding: FragmentHomeBinding
 
     private val _viewModel: HomeViewModel by viewModels()
 
-    private lateinit var _productsAdapter: ProductsAdapter
+    private  var _category: String = ""
 
+    private lateinit var _productsAdapter: ProductsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(
-            inflater,
-            container,
-            false
-        )
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return _binding.root
     }
 
-
-    override fun onStart() {
-        super.onStart()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setViews()
         setupSearch()
         setObservers()
@@ -54,10 +52,7 @@ class HomeFragment : Fragment(), IProductClickListener {
     }
 
 
-    // ============================================================
     // OBSERVE STATEFLOW
-    // ============================================================
-
     private fun setObservers() {
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -68,11 +63,6 @@ class HomeFragment : Fragment(), IProductClickListener {
 
                 _viewModel.products.collect { products ->
 
-                    Log.d(
-                        "HomeFragment",
-                        "Products received: ${products.size}"
-                    )
-
                     _productsAdapter.updateProducts(
                         ArrayList(products)
                     )
@@ -80,11 +70,6 @@ class HomeFragment : Fragment(), IProductClickListener {
             }
         }
     }
-
-
-    // ============================================================
-    // SEARCH
-    // ============================================================
 
     private fun setupSearch() {
 
@@ -120,20 +105,157 @@ class HomeFragment : Fragment(), IProductClickListener {
         )
     }
 
-
-    // ============================================================
-    // VIEWS
-    // ============================================================
-
     private fun setViews() {
+        // Categories button
+        _binding.imgViewCategories.setOnClickListener {
 
-        _binding.imgProfile.setOnClickListener {
+            if (_binding.drawerLayout.isDrawerOpen(GravityCompat.END)) {
+                _binding.drawerLayout.closeDrawer(GravityCompat.END)
+                _binding.imgViewCategories.setImageResource(R.drawable.ic_menu)
+            } else {
+                _binding.drawerLayout.openDrawer(GravityCompat.END)
+                _binding.imgViewCategories.setImageResource(R.drawable.ic_close)
+            }
+        }
+
+        _binding.categoryPhones.setOnClickListener {
+            _binding.drawerLayout.closeDrawer(GravityCompat.END)
+
+            val bundle = Bundle()
+            bundle.putString("categoryId","Phones")
 
             findNavController().navigate(
-                R.id.action_HomeFragment_to_ProfileFragment
+                R.id.action_HomeFragment_to_AllProductsFragment,
+                bundle
             )
         }
 
+        _binding.categoryLaptops.setOnClickListener {
+            _binding.drawerLayout.closeDrawer(GravityCompat.END)
+
+            val bundle = Bundle()
+            bundle.putString("categoryId", "Laptops")
+
+            findNavController().navigate(
+                R.id.action_HomeFragment_to_AllProductsFragment,
+                bundle
+            )
+        }
+
+        _binding.categoryTablets.setOnClickListener {
+            _binding.drawerLayout.closeDrawer(GravityCompat.END)
+            val bundle = Bundle()
+            bundle.putString("categoryId", "Tablets")
+
+            findNavController().navigate(
+                R.id.action_HomeFragment_to_AllProductsFragment,
+                bundle
+            )
+        }
+
+        _binding.categoryAccessories.setOnClickListener {
+            _binding.drawerLayout.closeDrawer(GravityCompat.END)
+            val bundle = Bundle()
+            bundle.putString("categoryId", "Accessories")
+
+            findNavController().navigate(
+                R.id.action_HomeFragment_to_AllProductsFragment,
+                bundle
+            )
+        }
+
+        _binding.categoryMonitors.setOnClickListener {
+            _binding.drawerLayout.closeDrawer(GravityCompat.END)
+            val bundle = Bundle()
+            bundle.putString("categoryId", "Monitors")
+
+            findNavController().navigate(
+                R.id.action_HomeFragment_to_AllProductsFragment,
+                bundle
+            )
+        }
+
+        _binding.categoryGaming.setOnClickListener {
+            _binding.drawerLayout.closeDrawer(GravityCompat.END)
+            val bundle = Bundle()
+            bundle.putString("categoryId", "Gaming")
+
+            findNavController().navigate(
+                R.id.action_HomeFragment_to_AllProductsFragment,
+                bundle
+            )
+        }
+
+        // Search test
+        _binding.etxtSearch.setOnEditorActionListener { _, _, _ ->
+            Toast.makeText(
+                requireContext(),
+                "Search: ${_binding.etxtSearch.text}",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            true
+        }
+
+        _binding.cVPhones.setOnClickListener {
+
+            val bundle = Bundle()
+            bundle.putString("categoryId", "Phones")
+
+            findNavController().navigate(
+                R.id.action_HomeFragment_to_AllProductsFragment,
+                bundle
+            )
+        }
+        _binding.cVAccessories.setOnClickListener {
+
+            val bundle = Bundle()
+            bundle.putString("categoryId", "Accessories")
+
+            findNavController().navigate(
+                R.id.action_HomeFragment_to_AllProductsFragment,
+                bundle
+            )
+        }
+        _binding.cVGaming.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("categoryId", "Gaming")
+
+            findNavController().navigate(
+                R.id.action_HomeFragment_to_AllProductsFragment,
+                bundle
+            )
+        }
+        _binding.cVMonitors.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("categoryId", "Monitors")
+
+            findNavController().navigate(
+                R.id.action_HomeFragment_to_AllProductsFragment,
+                bundle
+            )
+
+        }
+        _binding.cVLaptops.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("categoryId", "Laptops")
+
+            findNavController().navigate(
+                R.id.action_HomeFragment_to_AllProductsFragment,
+                bundle
+            )
+
+        }
+        _binding.cVTablets.setOnClickListener {
+
+            val bundle = Bundle()
+            bundle.putString("categoryId", "Tablets")
+
+            findNavController().navigate(
+                R.id.action_HomeFragment_to_AllProductsFragment,
+                bundle
+            )
+        }
 
         _binding.rvProducts.layoutManager =
             GridLayoutManager(
@@ -141,31 +263,7 @@ class HomeFragment : Fragment(), IProductClickListener {
                 2
             )
 
-
-        _binding.btnAddProduct.setOnClickListener {
-
-            findNavController().navigate(
-                R.id.action_HomeFragment_to_AddProductsFragment
-            )
-        }
-
-
-        _binding.imgSavedForLater.setOnClickListener {
-
-            findNavController().navigate(
-                R.id.action_HomeFragment_to_SaveForLaterFragment
-            )
-        }
-
-
-        _binding.btnBack.setOnClickListener {
-
-            requireActivity().finish()
-        }
-
-
-        _productsAdapter =
-            ProductsAdapter(ArrayList()).apply {
+        _productsAdapter = ProductsAdapter(ArrayList()).apply {
 
                 inter = this@HomeFragment
             }
@@ -173,13 +271,46 @@ class HomeFragment : Fragment(), IProductClickListener {
 
         _binding.rvProducts.adapter =
             _productsAdapter
+
+
+        _binding.bottomNavigation.selectedItemId = R.id.nav_home
+
+        _binding.bottomNavigation.setOnItemSelectedListener { item ->
+
+            when (item.itemId) {
+
+                R.id.nav_home -> {
+                    true
+                }
+
+                R.id.nav_SavedForLater -> {
+                    findNavController().navigate(
+                        R.id.action_HomeFragment_to_SaveForLaterFragment
+                    )
+                    true
+                }
+
+                R.id.nav_ShopAll -> {
+                    findNavController().navigate(
+                        R.id.action_HomeFragment_to_AllProductsFragment
+                    )
+                    true
+                }
+                R.id.nav_Profile -> {
+                    findNavController().navigate(
+                        R.id.action_HomeFragment_to_ProfileFragment
+                    )
+                    true
+                }
+                else -> false
+            }
+        }
+
+        _binding.txtShowAll.setOnClickListener {
+            findNavController().navigate(R.id.action_HomeFragment_to_AllProductsFragment)
+        }
     }
-
-
-    // ============================================================
     // PRODUCT CLICK
-    // ============================================================
-
     override fun onProductClick(
         product: Products
     ) {
@@ -196,8 +327,6 @@ class HomeFragment : Fragment(), IProductClickListener {
             bundle
         )
     }
-
-
     override fun onDestroyView() {
         super.onDestroyView()
     }

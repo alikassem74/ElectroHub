@@ -48,12 +48,14 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:padding="4dp"
-        android:background="@color/black"
-        android:src="@drawable/delete_logo"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_delete"
+        app:tint="@color/black"
         android:contentDescription="@string/delete_chat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

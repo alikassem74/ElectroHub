@@ -1,5 +1,6 @@
 package com.example.electrohub.fragments
 
+import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -60,7 +61,6 @@ class LoginFragment : Fragment() {
             .addCallback(
                 viewLifecycleOwner
             ) {
-
                 requireActivity().finish()
             }
     }
@@ -110,7 +110,6 @@ class LoginFragment : Fragment() {
                                     "Login Successful",
                                     Toast.LENGTH_SHORT
                                 ).show()
-
                                 _viewModel.getUsername()
                             }
 
@@ -216,92 +215,57 @@ class LoginFragment : Fragment() {
 
 
         _binding.etxtPassword
-            .addTextChangedListener { text ->
+            .addTextChangedListener {text ->
 
-                val hasText =
-                    !text.isNullOrEmpty()
+                val hasText = !text.isNullOrEmpty()
 
                 if (
                     _binding.etxtPassword.hasFocus()
                 ) {
-
-                    _binding.laptopView
-                        .setPasswordVisible(
-                            !hasText
-                        )
+                    _binding.laptopView.setPasswordVisible(!hasText)
                 }
             }
 
-
         _binding.btnLogin.setOnClickListener {
-
-            _viewModel.login(
-                getEmail().trim(),
-                getPassword()
-            )
+            _viewModel.login(getEmail().trim(), getPassword())
         }
 
 
         _binding.txtRegister.setOnClickListener {
-
-            findNavController().navigate(
-                R.id.action_loginFragment_to_registerFragment
-            )
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
 
 
         _binding.txtVForgotPassword.setOnClickListener {
-
-            val email =
-                getEmail().trim()
-
+            val email = getEmail().trim()
             if (email.isEmpty()) {
-
-                Toast.makeText(
-                    requireContext(),
-                    "Enter your email first",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(requireContext(), "Enter your email first", Toast.LENGTH_SHORT).show()
 
                 return@setOnClickListener
             }
 
-            _viewModel.resetPassword(
-                email
-            )
+            _viewModel.resetPassword(email)
         }
 
 
         _binding.root.setOnTouchListener {
-
                 _,
                 _ ->
 
-            _binding.laptopView
-                .setPasswordVisible(true)
+            _binding.laptopView.setPasswordVisible(true)
 
             _binding.etxtPassword.clearFocus()
+
             _binding.etxtEmail.clearFocus()
 
             false
         }
     }
 
-
-    private fun getEmail(): String =
-        _binding.etxtEmail
-            .text
-            .toString()
-
-
-    private fun getPassword(): String =
-        _binding.etxtPassword
-            .text
-            .toString()
-
+    private fun getEmail(): String = _binding.etxtEmail.text.toString()
+    private fun getPassword(): String = _binding.etxtPassword.text.toString()
 
     override fun onDestroyView() {
-
         super.onDestroyView()
     }
 }

@@ -99,6 +99,22 @@ class MyProductsFragment :
                 _productsAdapter.updateProducts(
                     ArrayList(products)
                 )
+                if (products.isEmpty()) {
+
+                    _binding.llEmpty.visibility =
+                        View.VISIBLE
+
+                    _binding.rvMyProducts.visibility =
+                        View.GONE
+
+                } else {
+
+                    _binding.llEmpty.visibility =
+                        View.GONE
+
+                    _binding.rvMyProducts.visibility =
+                        View.VISIBLE
+                }
             }
     }
 

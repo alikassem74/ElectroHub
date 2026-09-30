@@ -55,14 +55,13 @@ class ChatViewModel : ViewModel() {
     // USER
     // =========================================================
 
-    private val _userId =
-        _userRepository.getCurrentUserId()
+    private val _userId = _userRepository.getCurrentUserId()
 
     private var _chatId = ""
 
 
     fun getCurrentUserId(): String {
-        return _userId
+        return _userId?:""
     }
 
 
@@ -112,7 +111,7 @@ class ChatViewModel : ViewModel() {
 
         val message =
             Messages(
-                senderId = _userId,
+                senderId = _userId?:"Null Id",
                 message = text,
                 timestamp = Timestamp.now()
             )

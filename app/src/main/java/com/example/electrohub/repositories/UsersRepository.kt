@@ -9,14 +9,11 @@ import kotlinx.coroutines.tasks.await
 
 class UsersRepository {
 
-    private val firestore =
-        FirebaseFirestore.getInstance()
+    private val firestore = FirebaseFirestore.getInstance()
 
-    private val auth =
-        FirebaseAuth.getInstance()
+    private val auth = FirebaseAuth.getInstance()
 
     fun getCurrentUserId(): String? {
-
         return auth.currentUser?.uid
     }
 
@@ -74,9 +71,7 @@ class UsersRepository {
         token: String
     ): Boolean {
 
-        val uid =
-            getCurrentUserId()
-                ?: return false
+        val uid = getCurrentUserId() ?: return false
 
         return try {
 
